@@ -11,11 +11,17 @@
         }
 
         window.onload = function() {
-            const paramName = "p"; // Change this to your desired parameter name
+            const paramName = "p"; // The query parameter to read
             const paramValue = getParameterByName(paramName);
             if (paramValue) {
                 const newUrl = "http://www.sunsetroutes.com/" + encodeURI(paramValue);
-				
+
+                // Show clickable link in case redirect doesn't work
+                const link = document.getElementById("redirectLink");
+                link.href = newUrl;
+                link.textContent = "Click here if you are not redirected automatically.";
+
+                // Redirect
                 window.location.href = newUrl;
             } else {
                 document.body.innerHTML = "No valid parameter found.";
@@ -24,6 +30,6 @@
     </script>
 </head>
 <body>
-    <!-- <p>If you are not redirected, <a id="redirectLink" href="#">click here</a>.</p> -->
+    <p><a id="redirectLink" href="#" style="display: block; margin-top: 20px;"></a></p>
 </body>
 </html>
