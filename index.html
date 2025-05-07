@@ -11,15 +11,17 @@
         }
 
         window.onload = function() {
-            const paramName = "p"; // The query parameter to read
+            const paramName = "p";
             const paramValue = getParameterByName(paramName);
             if (paramValue) {
                 const newUrl = "http://www.sunsetroutes.com/" + encodeURI(paramValue);
 
-                // Show clickable link in case redirect doesn't work
+                // Set backup link without displaying it
                 const link = document.getElementById("redirectLink");
                 link.href = newUrl;
-                link.textContent = "Click here if you are not redirected automatically.";
+
+                // Optional: hide the link visually
+                link.style.display = "none";
 
                 // Redirect
                 window.location.href = newUrl;
@@ -30,6 +32,6 @@
     </script>
 </head>
 <body>
-    <p><a id="redirectLink" href="#" style="display: block; margin-top: 20px;"></a></p>
+    <a id="redirectLink" href="#"></a>
 </body>
 </html>
